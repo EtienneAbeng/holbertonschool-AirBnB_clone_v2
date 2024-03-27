@@ -8,22 +8,22 @@ class FileStorage:
     __file_path = 'file.json'
     __objects = {}
 
-    def all(self, cls=NONE):
-        """returns a dictionary
-        Args:
-            cls: class type to filter return by
-        Return:
-            returns a dictionary of __object
-        """
-        if not cls:
-            return self.__objects
-       filtered_objects = {}
+    def all(self, cls=None):
+    """returns a dictionary
+    Args:
+        cls: class type to filter return by
+    Return:
+        returns a dictionary of __object
+    """
+    if not cls:
+        return self.__objects
+    filtered_objects = {}
 
-        for key, value in self.__objects.items():
-            if type(value) == cls:
-                filtered_objects[key] = value
-                
-        return filtered_objects
+    for key, value in self.__objects.items():
+        if type(value) == cls:
+            filtered_objects[key] = value
+            
+    return filtered_objects
 
     def delete(self, obj=None):
         """Deletes an object from __objects if it exists"""
