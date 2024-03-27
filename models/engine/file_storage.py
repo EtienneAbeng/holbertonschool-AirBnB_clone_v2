@@ -24,6 +24,12 @@ class FileStorage:
                 filtered_objects[key] = value
                 
         return filtered_objects
+
+    def delete(self, obj=None):
+        """Deletes an object from __objects if it exists"""
+        if obj is not None:
+            key = obj.__class__.__name__ + '.' + obj.id
+            self.__objects.pop(key, None)
         
     def new(self, obj):
         """Adds new object to storage dictionary"""
