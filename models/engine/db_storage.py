@@ -33,24 +33,25 @@ class DBStorage:
 
     def all(self, cls=None):
         """variable"""
-        dic = {}
+        objects = {}
+        classes = [User, State, City, Amenity, Place, Review]
+
         if cls:
             """conditional"""
             if isinstance(cls, str):
                 cls = eval(cls)
             query = self.__session.query(cls)
-            for elem in query:
-                key = "{}.{}".format(type(elem).__name__, elem.id)
-                dic[key] = elem
+            for instance in query:
+                key = "{}.{}".format(type(instance).__name__, instance.id)
+                objects[key] = instance
         else:
-            lista = [State, City, User, Place, Review, Amenity]
-            for clase in lista:
-                query = self.__session.query(clase)
-                for elem in query:
-                    key = "{}.{}".format(type(elem).__name__, elem.id)
-                    dic[key] = elem
+            for cls in classes:
+                query = self.__session.query(cls)
+                for instance in query:
+                    key = "{}.{}".format(type(instance).__name__, instance.id)
+                    objects[key] = instance
         """return"""
-        return dic
+        return objects
 
     def new(self, obj):
         """new"""
