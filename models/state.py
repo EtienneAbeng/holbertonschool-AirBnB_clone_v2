@@ -19,15 +19,8 @@ class State(BaseModel, Base):
     @property
     def cities(self):
         """return the cities of the current state"""
-        var = models.storage.all()
-        lista = []
-        result = []
-        for key in var:
-            city = key.replace('.', ' ')
-            city = shlex.split(city)
-            if (city[0] == 'City'):
-                lista.append(var[key])
-        for elem in lista:
-            if (elem.state_id == self.id):
-                result.append(elem)
-        return (result)
+        cities_list = []
+        for city in models.storage.all(City).values():
+            if city.state_id == self.id:
+                cities_list.append(city)
+        return (cities_list)
