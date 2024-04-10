@@ -18,7 +18,7 @@ def c_is_fun(text):
 def python_is_cool(text):
     return "Python {}".format(text.replace('_', ' '))
 
-@app.route('/number/<int:n>', strict_slashes=False)  # Définition d'une route dynamique pour l'URL '/number/<n>' 
+app.route('/number/<int:n>',strict_slashes=False)  # Définition d'une route dynamique pour l'URL '/number/<n>' 
 def number(n):
     return "{} is a number".format(n)
 
