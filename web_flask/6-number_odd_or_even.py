@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+""" Script qui démarre une application Flask pour servir une page HTML """
+
 from flask import Flask, render_template  # Import des classes Flask et render_template
 
 app = Flask(__name__)  # Crée une instance de l'application Flask
