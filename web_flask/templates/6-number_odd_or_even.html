@@ -1,13 +1,14 @@
-<!DOCTYPE html>
-<HTML lang="en">
-    <HEAD>
-        <TITLE>HBNB</TITLE>
+
+<!DOCTYPE html> <!-- Déclaration du type de document -->
+<HTML lang="en"> <!-- Langue de la page: anglais -->
+    <HEAD> <!-- En-tête -->
+        <TITLE>HBNB</TITLE> <!-- Titre de la page -->
     </HEAD>
-    <BODY>
-	    {% if n % 2 == 0 %}
-	    <H1>Number: {{ n }} is even</H1>
-	    {% else %}
-	    <H1>Number: {{ n }} is odd</H1>
-	    {% endif %}
+    <BODY> <!-- Corps de la page -->
+	    {% if n % 2 == 0 %} <!-- Vérifie si n est pair -->
+	    <H1>Number: {{ n }} is even</H1> <!-- Affiche si n est pair -->
+	    {% else %} <!-- Sinon, si n est impair -->
+	    <H1>Number: {{ n }} is odd</H1> <!-- Affiche si n est impair -->
+	    {% endif %} <!-- Fin de la condition -->
     </BODY>
-</HTML>
+</HTML> <!-- Fin de la page HTML -->
