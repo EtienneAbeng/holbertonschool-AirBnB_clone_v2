@@ -1,3 +1,6 @@
+#!/usr/bin/python3
+""" Module pour démarrer une application Flask """
+
 from flask import Flask  # Importation de la classe Flask depuis le module flask
 
 app = Flask(__name__)  # Création d'une instance de l'application Flask
