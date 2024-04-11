@@ -13,4 +13,6 @@ def hello_hbnb():  # Fonction exécutée lorsque l'URL '/' est accédée
 
 
 if __name__ == '__main__':  # Vérification si le script est exécuté directement
-    app.run(host='0.0.0.0', port=5000)  # Démarrage du serveur Flask sur toutes les adresses IP (0.0.0.0) et le port 5000
+    # Démarrage du serveur Flask sur toutes les adresses IP (0.0.0.0) et le
+    # port 5000
+    app.run(host='0.0.0.0', port=5000)
