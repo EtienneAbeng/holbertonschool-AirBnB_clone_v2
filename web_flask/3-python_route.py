@@ -1,30 +1,36 @@
 #!/usr/bin/python3
 ''' Module pour démarrer une application Flask '''
 
-from flask import Flask  # Importation de la classe Flask depuis le module flask
+from flask import Flask
 
-app = Flask(__name__)  # Création d'une instance de l'application Flask
+app = Flask(__name__)
 
-@app.route('/', strict_slashes=False)  # Définition d'une route pour l'URL '/'
+# Définit une route pour l'URL '/' qui renvoie "Hello HBNB"
+@app.route('/', strict_slashes=False)
 def hello_hbnb():
-    return "Hello HBNB"  # Retourne "Hello HBNB" comme réponse à la requête
+    ''' Fonction exécutée lorsque l'URL '/' est accédée '''
+    return "Hello HBNB"
 
-@app.route('/hbnb', strict_slashes=False)  # Définition d'une route pour l'URL '/hbnb'
+# Définit une route pour l'URL '/hbnb' qui renvoie "HBNB"
+@app.route('/hbnb', strict_slashes=False)
 def hbnb():
+    ''' Fonction exécutée lorsque l'URL '/hbnb' est accédée '''
     return "HBNB"
 
-@app.route('/c/<text>', strict_slashes=False)  # Définition d'une route dynamique pour l'URL '/c/<text>'
+# Définit une route dynamique pour l'URL '/c/<text>'
+# qui renvoie "C " suivi du texte avec les underscores remplacés par des espaces
+@app.route('/c/<text>', strict_slashes=False)
 def c_is_fun(text):
-    return "C {}".format(text.replace('_', ''))
-'''
-@app.route('/python/<text>', strict_slashes=False)  # Définition d'une route dynamique pour l'URL '/python/<text>'
-def python_is_cool(text = 'is_cool'):
-    return "Python {}".format(text.replace('_', ' '))  # Retourne "Python " suivi du texte avec les underscores remplacés par des espaces
-'''
+    ''' Fonction exécutée lorsque l'URL '/c/<text>' est accédée '''
+    return "C {}".format(text.replace('_', ' '))
+
+# Définit une route pour l'URL '/python/<text>' et '/python/'
+# qui renvoie "Python " suivi du texte avec les underscores remplacés par des espaces
+@app.route('/python/', strict_slashes=False)
 @app.route('/python/<text>', strict_slashes=False)
-@app.route('/python', strict_slashes=False)    
-def python_is_cool(text = 'is_cool'):
-    return "Python {}".format(text.replace('_', '  '))
+def python_is_cool(text='is cool'):
+    ''' Fonction exécutée lorsque l'URL '/python/<text>' est accédée '''
+    return "Python {}".format(text.replace('_', ' '))
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)  # Démarrage du serveur Flask sur toutes les adresses IP et le port 5000
+    app.run(host='0.0.0.0', port=5000)
