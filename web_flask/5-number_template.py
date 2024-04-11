@@ -1,30 +1,47 @@
-from flask import Flask, render_template  # Import des classes Flask et render_template
+#!/usr/bin/python3
+""" Script qui démarre une application Flask avec une route dynamique qui renvoie un modèle HTML """
 
-app = Flask(__name__)  # Création de l'application Flask
+from flask import Flask, render_template  # Importe les classes Flask et render_template
 
-@app.route('/', strict_slashes=False)  # Route pour l'URL '/'
+app = Flask(__name__)  # Crée une instance de l'application Flask
+
+# Définit une route pour l'URL '/' qui renvoie "Hello HBNB"
+@app.route('/', strict_slashes=False)
 def hello_hbnb():
-    return "Hello HBNB"  # Retourne "Hello HBNB"
+    """ Fonction qui renvoie 'Hello HBNB' """
+    return "Hello HBNB"
 
-@app.route('/hbnb', strict_slashes=False)  # Route pour l'URL '/hbnb'
+# Définit une route pour l'URL '/hbnb' qui renvoie "HBNB"
+@app.route('/hbnb', strict_slashes=False)
 def hbnb():
-    return "HBNB"  # Retourne "HBNB"
+    """ Fonction qui renvoie 'HBNB' """
+    return "HBNB"
 
-@app.route('/c/<text>', strict_slashes=False)  # Route dynamique pour '/c/<text>'
+# Définit une route dynamique pour l'URL '/c/<text>' qui renvoie "C " suivi du texte sans underscores
+@app.route('/c/<text>', strict_slashes=False)
 def c_is_fun(text):
-    return "C {}".format(text.replace('_', ''))  # Retourne "C <text>" sans underscores
+    """ Fonction qui renvoie 'C ' suivi du texte sans underscores """
+    return "C {}".format(text.replace('_', ''))
 
-@app.route('/python/', defaults={'text': 'is_cool'}, strict_slashes=False)  # Route dynamique pour '/python/<text>'
+# Définit une route pour l'URL '/python/<text>' et '/python/'
+# qui renvoie "Python " suivi du texte sans underscores
+@app.route('/python/', defaults={'text': 'is_cool'}, strict_slashes=False)
+@app.route('/python/<text>', strict_slashes=False)
 def python_is_cool(text):
-    return "Python {}".format(text.replace('_', ' '))  # Retourne "Python <text>" sans underscores
+    """ Fonction qui renvoie 'Python ' suivi du texte sans underscores """
+    return "Python {}".format(text.replace('_', ' '))
 
-@app.route('/number/<int:n>', strict_slashes=False)  # Route dynamique pour '/number/<n>'
+# Définit une route dynamique pour l'URL '/number/<n>' qui renvoie "<n> is a number"
+@app.route('/number/<int:n>', strict_slashes=False)
 def number(n):
-    return "{} is a number".format(n)  # Retourne "<n> is a number"
+    """ Fonction qui renvoie '<n> is a number' """
+    return "{} is a number".format(n)
 
-@app.route('/number_template/<int:n>', strict_slashes=False)  # Route dynamique pour '/number_template/<n>'
+# Définit une route dynamique pour l'URL '/number_template/<n>' qui renvoie le modèle '5-number.html' avec n comme variable
+@app.route('/number_template/<int:n>', strict_slashes=False)
 def number_template(n):
-    return render_template('5-number.html', n=n)  # Rend le modèle '5-number.html' avec n comme variable
+    """ Fonction qui rend le modèle '5-number.html' avec n comme variable """
+    return render_template('5-number.html', n=n)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)  # Démarrage du serveur Flask sur toutes les adresses IP et le port 5000
+    app.run(host='0.0.0.0', port=5000)  # Démarre le serveur Flask sur toutes les adresses IP et le port 5000
