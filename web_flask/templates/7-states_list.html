@@ -1,0 +1,14 @@
+<!DOCTYPE html> <!-- Définit le type de document comme HTML -->
+<html>
+<head>
+    <title>List of States</title> <!-- Titre de la page affiché dans l'onglet du navigateur -->
+</head>
+<body>
+    <h1>States</h1> <!-- En-tête de niveau 1 indiquant "States" -->
+    <ul>
+        {% for state in states %} <!-- Boucle sur chaque état dans la liste des états -->
+            <li>{{ state.id }}: <b>{{ state.name }}</b></li> <!-- Élément de liste représentant un état, affichant son ID et son nom en gras -->
+        {% endfor %}
+    </ul>
+</body>
+</html>
